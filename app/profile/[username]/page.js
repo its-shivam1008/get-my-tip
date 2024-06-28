@@ -1,9 +1,35 @@
+"use client";
 import React from 'react'
-
-const page = ({params}) => {
+import { Tranquiluxe } from "uvcanvas"
+import { useSession, signIn, signOut } from "next-auth/react"
+import Image from 'next/image';
+const page = () => {
+    const { data: session} = useSession()
   return (
-    <div className='flex justify-center items-center'>
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Provident delectus atque cumque dolor tempore quas omnis, fuga voluptatem ullam in repudiandae voluptas itaque sequi impedit beatae distinctio quis. Porro ut numquam consequuntur suscipit laudantium odio iusto itaque? Blanditiis, doloribus? Odio a corrupti beatae, unde facere repellendus delectus deleniti quod, vero quas facilis? Pariatur rem modi dolore, impedit perspiciatis quibusdam neque, veniam aliquam soluta alias aut error cum blanditiis quae libero quam aliquid, tempora fuga. Quos sed aspernatur aut eius molestias alias, expedita ipsum. Voluptates veritatis, exercitationem est cupiditate itaque ipsa magni. Ipsa qui sequi incidunt sunt doloribus quisquam necessitatibus nobis.{params.username}
+    <div className='h-screen w-full '>
+      <div className='absolute w-full'>
+        <div className='h-[15vh] w-full mt-14'>
+          <Tranquiluxe />
+        </div>
+        <div className='grid grid-cols-2 gap-4'>
+          <div>Payments made By</div>
+          <div className='p-5 flex flex-col'>
+          <div className="rounded-full justify-end flex">
+              <Image className='rounded-full' width={150} height={150} src={session.user.image}/>
+            </div>
+            <div className='flex flex-grow mx-auto my-auto justify-center items-center'>
+              <div className='p-4 flex justify-center my-auto rounded-[12px] w-fit bg-white bg-opacity-40 backdrop-blur-lg'>
+                <div>
+                  <div className='text-center'>User info</div>
+                  <hr />
+                  <div>Name: {session.user.name}</div>
+                  <div>email: {session.user.email}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
