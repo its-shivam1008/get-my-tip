@@ -3,13 +3,15 @@ import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState } from 'react'
+import { useSession, signIn, signOut } from "next-auth/react"
 const Navbar = () => {
     const [optionsCss, setoptionsCss] = useState(false)
     const handleClick = () =>{
         setoptionsCss(!optionsCss);
     }
+    const { data: session } = useSession()
     return (
-        <nav className='z-50 flex h-12 justify-around bg-white bg-opacity-30 backdrop-blur-2xl absolute w-screen top-0 items-center'>
+        <nav className='z-50 flex h-14 justify-around bg-white bg-opacity-30 backdrop-blur-2xl absolute w-full top-0 items-center'>
             <div>
                 <Link href='/' className='text-2xl font-bold'>Logo</Link>
             </div>
@@ -21,13 +23,18 @@ const Navbar = () => {
                     <div className="bg-white h-1 rounded-xl w-7"></div>
                 </div>
             </div>
-            <ul className={`${optionsCss?"min-[0px]:max-md:visible min-[0px]:max-md:absolute min-[0px]:max-md:top-[76px] min-[0px]:max-md:mx-auto min-[0px]:max-md:text-center min-[0px]:max-md:w-screen min-[0px]:max-md:space-y-4 min-[0px]:max-md:bg-white min-[0px]:max-md:bg-opacity-30  min-[0px]:max-md:backdrop-blur-2xl":"hidden"} md:flex md:items-center md:space-x-5`}>
-                <li className='hover:text-blue-600 hover:transition-colors hover:duration-500'><Link href='/about'>About</Link></li>
+            <ul className={`${optionsCss?"min-[0px]:max-md:visible min-[0px]:max-md:absolute min-[0px]:max-md:top-[112px] min-[0px]:max-md:mx-auto min-[0px]:max-md:text-center min-[0px]:max-md:w-screen min-[0px]:max-md:space-y-4 min-[0px]:max-md:bg-white min-[0px]:max-md:bg-opacity-30  min-[0px]:max-md:backdrop-blur-3xl":"hidden"} md:flex md:items-center md:space-x-5`}>
+                <li className='hover:text-blue-600 hover:transition-colors hover:duration-500'><Link href='/#features'>Features</Link></li>
                 <li className='hover:text-blue-600 hover:transition-colors hover:duration-500'><Link href='/contact'>Contact</Link></li>
                 <li className='hover:text-blue-600 hover:transition-colors hover:duration-500'><Link href='/services'>Services</Link></li>
             </ul>
-            <div className={`${optionsCss?"min-[0px]:max-md:visible min-[0px]:max-md:absolute min-[0px]:max-md:top-[48px] min-[0px]:max-md:mx-auto min-[0px]:max-md:text-center min-[0px]:max-md:w-screen min-[0px]:max-md:space-y-4 min-[0px]:max-md:bg-white min-[0px]:max-md:bg-opacity-30 min-[0px]:max-md:backdrop-blur-2xl":"hidden"} md:flex`}>
-                <input className='p-3 h-7 border-blue-500 border-3 outline-blue-500 rounded-2xl' type="text" name="search" id="search" placeholder='Search...'/>
+            <div className={`${optionsCss?"min-[0px]:max-md:visible min-[0px]:max-md:absolute min-[0px]:max-md:top-[56px] min-[0px]:max-md:py-2 min-[0px]:max-md:mx-auto min-[0px]:max-md:text-center min-[0px]:max-md:w-screen min-[0px]:max-md:space-y-4 min-[0px]:max-md:bg-white min-[0px]:max-md:bg-opacity-30 min-[0px]:max-md:backdrop-blur-3xl":"hidden"} md:flex md:justify-center md:items-center`}>
+                <div>
+                    {!session && <Link href="/login" className="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">LogIn as Creator</Link>}
+                </div>
+                <div>
+                    {session && <button onClick={()=>{signOut()}} className="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Logout</button>}
+                </div>
             </div>
         </nav>
     )
