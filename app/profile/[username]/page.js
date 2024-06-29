@@ -1,15 +1,19 @@
 "use client";
 import React from 'react'
+import { permanentRedirect, redirect } from 'next/navigation'
 import { Tranquiluxe } from "uvcanvas"
 import { useSession, signIn, signOut } from "next-auth/react"
 import Image from 'next/image';
 const page = () => {
     const { data: session} = useSession()
+    if(!session){
+      redirect('/login');
+    }
   return (
     <div className='h-screen w-full '>
       <div className='absolute w-full'>
         <div className='h-[15vh] w-full mt-14'>
-          <Tranquiluxe />
+          {/* <Tranquiluxe /> */}
         </div>
         <div className='grid grid-cols-2 gap-4'>
           <div>Payments made By</div>

@@ -8,7 +8,7 @@ export default function Home() {
     <div className="overflow-x-hidden">
       <div>
         <div className="h-screen bg-green-400" id="home">
-          <Velustro />
+          {/* <Velustro /> */}
         </div>
         <div className="md:bg-gradient-to-r from-transparent min-[0px]:max-md:bg-white min-[0px]:max-md:bg-opacity-60 md:grid md:grid-cols-2 md:gap-3  absolute top-0 md:to-white h-screen">
         <div className="col-start-2 flex flex-col space-y-4 items-center justify-center min-[0px]:max-md:pt-20 text-center p-5">
