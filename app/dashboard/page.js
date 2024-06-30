@@ -3,11 +3,11 @@ import { Novatrix } from 'uvcanvas'
 const page = () => {
   return (
     <div>
-      <div className='h-screen'>
+      <div className='md:h-screen min-[0px]:max-md:h-[150vh]'>
         <Novatrix />
       </div>
-      <div className='absolute h-screen w-full bg-gradient-to-b from-transparent to-white bg-opacity-50 top-0  flex justify-center items-center'>
-        <div className='p-5 rounded-[12px] backdrop-blur-2xl bg-slate-200 shadow-2xl bg-opacity-70'>
+      <div className='absolute h-screen min-[0px]:max-md:h-[150vh] w-full bg-gradient-to-b from-transparent to-white bg-opacity-50 top-0  flex justify-center items-center'>
+        <div className=' p-5 rounded-[12px] backdrop-blur-2xl bg-slate-200 shadow-2xl bg-opacity-70'>
             <div className='space-y-5'>
                 <div className='text-center text-3xl font-bold text-blue-400'>Dashboard</div>
                 <form className='space-y-4' action="">
