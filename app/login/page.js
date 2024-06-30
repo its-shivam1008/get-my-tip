@@ -15,7 +15,8 @@ const page = () => {
     )
     }
     if(session){
-        redirect(`/profile/${session.user.name.split(' ')[0]}`);
+        redirect('/dashboard');
+        // redirect(`/profile/${session.user.name.split(' ')[0]}`);
     }else{
         return (
             <div className='h-screen'>
