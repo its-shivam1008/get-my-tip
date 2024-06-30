@@ -1,13 +1,14 @@
 "use client";
 import React from 'react'
-import { permanentRedirect, redirect } from 'next/navigation'
+import { useRouter } from 'next/navigation';
 import { Tranquiluxe } from "uvcanvas"
 import { useSession, signIn, signOut } from "next-auth/react"
 import Image from 'next/image';
 const page = () => {
     const { data: session} = useSession()
     if(!session){
-      redirect('/login');
+      const router = useRouter();
+      router.push('/login');
     }
   return (
     <div className='h-screen w-full '>

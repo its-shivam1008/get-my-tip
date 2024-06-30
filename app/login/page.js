@@ -1,7 +1,7 @@
 "use client";
 import React from 'react'
 import { useSession, signIn, signOut } from "next-auth/react"
-import { permanentRedirect, redirect } from 'next/navigation'
+import { useRouter } from 'next/navigation';
 import { Opulento } from "uvcanvas"
 
 const page = () => {
@@ -15,7 +15,9 @@ const page = () => {
     )
     }
     if(session){
-        redirect('/dashboard');
+        const router = useRouter();
+        router.push('/dashboard');
+        // redirect('/dashboard');
         // redirect(`/profile/${session.user.name.split(' ')[0]}`);
     }else{
         return (

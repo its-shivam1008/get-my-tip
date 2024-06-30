@@ -1,6 +1,20 @@
+"use client"
 import React from 'react'
+import { useSession, signIn, signOut } from "next-auth/react"
+import { redirect } from 'next/navigation'
 import { Novatrix } from 'uvcanvas'
+import { useRouter } from 'next/navigation';
 const page = () => {
+  const { data: session, status } = useSession()
+  if(!session){
+    const router = useRouter();
+    router.push('/dashboard');
+  }
+  if(status === 'loading'){
+    return(
+        <div className="h-screen flex justify-center items-center text-4xl font-bold">Loading</div>
+    )
+  }
   return (
     <div>
       <div className='md:h-screen min-[0px]:max-md:h-[150vh]'>
@@ -14,11 +28,11 @@ const page = () => {
                     <label htmlFor="name">Name : </label>
                     <input placeholder='Sanjay' className='h-10 w-[250px] px-2 focus:outline-blue-400 rounded-[12px]' type="text" id='name' name='name' required/><br />
                     <label htmlFor="username">Username : </label>
-                    <input className='h-10 w-[250px] px-2 focus:outline-blue-400 rounded-[12px]' type="text" id='username' name='username' placeholder='get your username or update it' required/><br />
+                    <input className='h-10 w-[250px] px-2 focus:outline-blue-400 rounded-[12px]' type="text" id='username' name='username' placeholder='get your username or update it' required autoComplete='username'/><br />
                     <label htmlFor="email">Email : </label>
                     <input placeholder='abc@gamil.com' className='h-10 w-[250px] px-2 focus:outline-blue-400 rounded-[12px]' type="email" id='email' name='email' required/><br />
                     <label htmlFor="password">Password : </label>
-                    <input className='h-10 w-[250px] px-2 focus:outline-blue-400 rounded-[12px]' type="password" id='password' name='password' required/><br />
+                    <input className='h-10 w-[250px] px-2 focus:outline-blue-400 rounded-[12px]' type="password" id='password' name='password' required autoComplete='current-password'/><br />
                     <label htmlFor="payId">Razorpay Id : </label>
                     <input className='h-10 w-[250px] px-2 focus:outline-blue-400 rounded-[12px]' type="text" id='payId' name='payId' required/><br />
                     <label htmlFor="paySecret">Razorpay secret : </label>
