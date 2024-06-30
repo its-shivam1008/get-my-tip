@@ -29,14 +29,13 @@ export default function Home() {
         </div>
       </div>
       </div>
-      <div id="features" className="md:h-screen h-fit ">
+      <div id="features" className="h-fit ">
         <Features/>
       </div>
-      <div id="lol" className="md:h-screen h-fit relative">
+      <div id="lol" className="h-fit relative">
         <Testimonials/>
         <Link href="#home" title="Back to top" className="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-[100px] px-3 py-2 text-center text-2xl absolute bottom-3 right-3">▲</Link>
       </div>
-      
-</div>
+    </div>
   );
 }
