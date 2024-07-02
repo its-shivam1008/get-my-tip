@@ -31,25 +31,25 @@ const Navbar = () => {
                     <div className="bg-white h-1 rounded-xl w-7"></div>
                 </div>
             </div>
-            <ul className={`${optionsCss?"min-[0px]:max-md:visible min-[0px]:max-md:absolute min-[0px]:max-md:top-[112px] min-[0px]:max-md:mx-auto min-[0px]:max-md:text-center min-[0px]:max-md:w-screen min-[0px]:max-md:space-y-4 min-[0px]:max-md:bg-white min-[0px]:max-md:bg-opacity-30  min-[0px]:max-md:backdrop-blur-3xl":"hidden"} md:flex md:items-center md:space-x-5`}>
+            <ul className={`${optionsCss?"min-[0px]:max-md:visible min-[0px]:max-md:absolute min-[0px]:max-md:top-[132px] min-[0px]:max-md:mx-auto min-[0px]:max-md:text-center min-[0px]:max-md:w-screen min-[0px]:max-md:space-y-4 min-[0px]:max-md:bg-white min-[0px]:max-md:bg-opacity-30  min-[0px]:max-md:backdrop-blur-3xl":"hidden"} md:flex md:items-center md:space-x-5`}>
                 <li className='hover:text-blue-600 hover:transition-colors hover:duration-500'><Link href='/#features'>Features</Link></li>
                 <li className='hover:text-blue-600 hover:transition-colors hover:duration-500'><Link href='/contact'>Contact</Link></li>
                 <li className='hover:text-blue-600 hover:transition-colors hover:duration-500'><Link href='/services'>Services</Link></li>
             </ul>
-            <div className={`${optionsCss?"min-[0px]:max-md:visible min-[0px]:max-md:absolute min-[0px]:max-md:top-[56px] min-[0px]:max-md:py-2 min-[0px]:max-md:mx-auto min-[0px]:max-md:text-center min-[0px]:max-md:w-screen min-[0px]:max-md:space-y-4 min-[0px]:max-md:bg-white min-[0px]:max-md:bg-opacity-30 min-[0px]:max-md:backdrop-blur-3xl":"hidden"} md:flex md:justify-center md:items-center`}>
+            <div className={`${optionsCss?"min-[0px]:max-md:visible min-[0px]:max-md:absolute min-[0px]:max-md:top-[56px] min-[0px]:max-md:py-3 min-[0px]:max-md:mx-auto min-[0px]:max-md:text-center min-[0px]:max-md:w-screen min-[0px]:max-md:space-y-4 min-[0px]:max-md:bg-white min-[0px]:max-md:bg-opacity-30 min-[0px]:max-md:backdrop-blur-3xl":"hidden"} md:flex md:justify-center md:items-center`}>
                 <div>
                     {!session && <Link href="/login" className="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">LogIn as Creator</Link>}
                 </div>
                 <div>
                     {session && <div>
-                                <button id="dropdownDefaultButton" onClick={() => setShowDropDown(!showDropDown)} data-dropdown-toggle="dropdown" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Welcome {session.user.name}<svg className="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                <button id="dropdownDefaultButton" onClick={() => setShowDropDown(!showDropDown)} data-dropdown-toggle="dropdown" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Welcome {session.user.name}<svg className="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokWidth="2" d="m1 1 4 4 4-4"/>
                                 </svg>
                                 </button>
-                                <div id="dropdown" className={`z-10 ${showDropDown?"":"hidden"} absolute mt-2 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700`}>
+                                <div id="dropdown" className={`z-10 ${showDropDown?"min-[0px]:max-md:left-[50%]":"hidden"} absolute mt-2 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700`}>
                                     <ul className="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
                                     <li>
-                                        <a href="/dashboard" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
+                                        <a href="/dashboard" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-left">Dashboard</a>
                                     </li>
                                     <li>
                                         <button onClick={profilePage} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white w-full text-left">Profile</button>
