@@ -2,18 +2,20 @@
 import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useState } from 'react'
 import { useSession, signIn, signOut } from "next-auth/react"
-import { redirect } from 'next/navigation'
+import { useRouter } from 'next/navigation';
+import { useState } from 'react'
 const Navbar = () => {
     const { data: session } = useSession()
     const [optionsCss, setoptionsCss] = useState(false)
     const [showDropDown, setShowDropDown] = useState(false)
+    const router = useRouter();
     const handleClick = () =>{
         setoptionsCss(!optionsCss);
     }
     const profilePage = () =>{
-        redirect(`/profile/${session.user.name.split(' ')[0]}`)
+        
+        router.push(`/profile/${session.user.name.split(' ')[0]}`)
     }
     
     return (

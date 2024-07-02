@@ -1,15 +1,18 @@
 "use client"
 import React from 'react'
 import { useSession, signIn, signOut } from "next-auth/react"
-import { redirect } from 'next/navigation'
-import { Novatrix } from 'uvcanvas'
 import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
+import { Novatrix } from 'uvcanvas'
 const page = () => {
-  const { data: session, status } = useSession()
-  if(!session){
-    const router = useRouter();
-    router.push('/dashboard');
-  }
+  const { data: session, status } = useSession();
+  const router = useRouter();
+  useEffect(() => {
+    if(!session){
+      router.push('/login');
+    }
+  }, [])
+  
   if(status === 'loading'){
     return(
         <div className="h-screen flex justify-center items-center text-4xl font-bold">Loading</div>
@@ -18,7 +21,7 @@ const page = () => {
   return (
     <div>
       <div className='md:h-screen min-[0px]:max-md:h-[150vh]'>
-        <Novatrix />
+        {/* <Novatrix /> */}
       </div>
       <div className='absolute h-screen min-[0px]:max-md:h-[150vh] w-full md:bg-gradient-to-b md:from-transparent md:to-white md:bg-opacity-50 top-0  flex justify-center items-center'>
         <div className='p-5 rounded-[12px] min-[0px]:max-md:backdrop-blur-sm backdrop-blur-2xl bg-slate-200 shadow-2xl bg-opacity-70'>

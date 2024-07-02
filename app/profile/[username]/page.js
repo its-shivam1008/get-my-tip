@@ -1,15 +1,19 @@
 "use client";
 import React from 'react'
-import { useRouter } from 'next/navigation';
-import { Tranquiluxe } from "uvcanvas"
 import { useSession, signIn, signOut } from "next-auth/react"
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
+import { Tranquiluxe } from "uvcanvas"
 import Image from 'next/image';
 const page = () => {
     const { data: session} = useSession()
-    if(!session){
-      const router = useRouter();
-      router.push('/login');
-    }
+    const router = useRouter();
+    useEffect(() => {
+      if(!session){
+        router.push('/login');
+      }
+    }, [])
+  if(session){
   return (
     <div className='h-screen w-full '>
       <div className='absolute w-full'>
@@ -38,5 +42,5 @@ const page = () => {
     </div>
   )
 }
-
+}
 export default page
