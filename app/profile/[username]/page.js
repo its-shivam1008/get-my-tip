@@ -28,23 +28,23 @@ const page = () => {
               </div>
               <div className='rounded-[12px] space-y-1 p-3 bg-slate-300 bg-opacity-40 backdrop-blur-xl shadow-2xl'>
                 <div className='flex space-x-1'>
-                  <Image src="profile.svg" alt="Profileimg" width={20} height={20}/> <span>aman donated</span><span className='folt-bold'> $20 </span><span>with a message: </span><span>"Mesage is that you're cute."</span>
+                  <Image src="profile.svg" alt="Profileimg" width={20} height={20}/> <span>aman donated</span><span className='folt-bold'> ₹20 </span><span>with a message: </span><span>"Mesage is that you're cute."</span>
                 </div>
                 <div className='flex space-x-1'>
-                  <Image src="profile.svg" alt="Profileimg" width={20} height={20}/> <span>aman2 donated</span><span className='folt-bold'> $20 </span><span>with a message: </span><span>"Mesage is that you're cute."</span>
+                  <Image src="profile.svg" alt="Profileimg" width={20} height={20}/> <span>aman2 donated</span><span className='folt-bold'> ₹20 </span><span>with a message: </span><span>"Mesage is that you're cute."</span>
                 </div>
                 <div className='flex space-x-1'>
-                  <Image src="profile.svg" alt="Profileimg" width={20} height={20}/> <span>aman3 donated</span><span className='folt-bold'> $20 </span><span>with a message: </span><span>"Mesage is that you're cute."</span>
+                  <Image src="profile.svg" alt="Profileimg" width={20} height={20}/> <span>aman3 donated</span><span className='folt-bold'> ₹20 </span><span>with a message: </span><span>"Mesage is that you're cute."</span>
                 </div>
                 <div className='flex space-x-1'>
-                  <Image src="profile.svg" alt="Profileimg" width={20} height={20}/> <span>aman4 donated</span><span className='folt-bold'> $20 </span><span>with a message: </span><span>"Mesage is that you're cute."</span>
+                  <Image src="profile.svg" alt="Profileimg" width={20} height={20}/> <span>aman4 donated</span><span className='folt-bold'> ₹20 </span><span>with a message: </span><span>"Mesage is that you're cute."</span>
                 </div>
               </div>
             </div>
             <div>
               <div className='font-bold flex space-x-1 py-5 px-3 w-fit mx-auto text-center bg-blue-300 bg-opacity-50 backdrop-blur-xl shadow-xl rounded-[12px]'>
                   <div className='text-3xl text-black'>Earnings :</div>
-                  <div className='text-3xl text-green-500'>$ 433,454</div>
+                  <div className='text-3xl text-green-500'>₹ 433,454</div>
               </div>
             </div>
           </div>

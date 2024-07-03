@@ -1,8 +1,8 @@
 import React from 'react'
-
+import { Tranquiluxe, Velustro } from "uvcanvas"
 const Testimonials = () => {
     return (
-        <div id='testimonials'>
+        <div id='testimonials' className='py-16'>
             <div className="flex justify-center  p-4">
                 <div className="flex flex-col justify-center items-center ">
                     <div className="text-stone-600  font-medium">Testimonials</div>
