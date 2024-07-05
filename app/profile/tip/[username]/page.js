@@ -17,7 +17,6 @@ const page = () => {
     const [paymentForm, setPaymentForm] = useState({}) ;
     const handleChange = (e) =>{
         setPaymentForm({...paymentForm, [e.target.name]:e.target.value})
-        console.log(paymentForm);
     }
     const handleClick = (e)=>{
         e.preventDefault()

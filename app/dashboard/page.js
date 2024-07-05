@@ -2,7 +2,7 @@
 import React from 'react'
 import { useSession, signIn, signOut } from "next-auth/react"
 import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Novatrix } from 'uvcanvas'
 const page = () => {
   const { data: session, status } = useSession();
@@ -18,10 +18,18 @@ const page = () => {
         <div className="h-screen flex justify-center items-center text-4xl font-bold">Loading</div>
     )
   }
+  const [changeVar, setChangeVar] = useState({});
+  const handleChange = (e) => {
+    setChangeVar({...changeVar, [e.target.name]: e.target.value});
+  }
+  const handleClick = (e) => {
+    e.preventDefault();
+    console.log(changeVar); 
+  }
   return (
     <div>
       <div className='md:h-screen min-[0px]:max-md:h-[150vh]'>
-        {/* <Novatrix /> */}
+        <Novatrix />
       </div>
       <div className='absolute h-screen min-[0px]:max-md:h-[150vh] w-full md:bg-gradient-to-b md:from-transparent md:to-white md:bg-opacity-50 top-0  flex justify-center items-center'>
         <div className='p-5 rounded-[12px] min-[0px]:max-md:backdrop-blur-sm backdrop-blur-2xl bg-slate-200 shadow-2xl bg-opacity-70'>
@@ -29,20 +37,20 @@ const page = () => {
                 <div className='text-center text-3xl font-bold text-blue-400'>Dashboard</div>
                 <form className='space-y-4' action="">
                     <label htmlFor="name">Name : </label>
-                    <input placeholder='Sanjay' className='h-10 w-[250px] px-2 focus:outline-blue-400 rounded-[12px]' type="text" id='name' name='name' required/><br />
+                    <input onChange={handleChange} placeholder='Sanjay' className='h-10 w-[250px] px-2 focus:outline-blue-400 rounded-[12px]' type="text" id='name' name='name' value={changeVar.name} required/><br />
                     <label htmlFor="username">Username : </label>
-                    <input className='h-10 w-[250px] px-2 focus:outline-blue-400 rounded-[12px]' type="text" id='username' name='username' placeholder='get your username or update it' required autoComplete='username'/><br />
+                    <input onChange={handleChange} className='h-10 w-[250px] px-2 focus:outline-blue-400 rounded-[12px]' type="text" id='username' name='username' placeholder='get your username or update it' value={changeVar.username} required autoComplete='username'/><br />
                     <label htmlFor="email">Email : </label>
-                    <input placeholder='abc@gamil.com' className='h-10 w-[250px] px-2 focus:outline-blue-400 rounded-[12px]' type="email" id='email' name='email' required/><br />
+                    <input onChange={handleChange} placeholder='abc@gamil.com' className='h-10 w-[250px] px-2 focus:outline-blue-400 rounded-[12px]' type="email" id='email' name='email' value={changeVar.email} required/><br />
                     <label htmlFor="password">Password : </label>
-                    <input className='h-10 w-[250px] px-2 focus:outline-blue-400 rounded-[12px]' type="password" id='password' name='password' required autoComplete='current-password'/><br />
+                    <input onChange={handleChange} className='h-10 w-[250px] px-2 focus:outline-blue-400 rounded-[12px]' type="password" id='password' name='password' value={changeVar.password} required autoComplete='current-password'/><br />
                     <label htmlFor="payId">Razorpay Id : </label>
-                    <input className='h-10 w-[250px] px-2 focus:outline-blue-400 rounded-[12px]' type="text" id='payId' name='payId' required/><br />
+                    <input onChange={handleChange} className='h-10 w-[250px] px-2 focus:outline-blue-400 rounded-[12px]' type="text" id='payId' name='payId' value={changeVar.payId} required/><br />
                     <label htmlFor="paySecret">Razorpay secret : </label>
-                    <input className='h-10 w-[250px] px-2 focus:outline-blue-400 rounded-[12px]' type="text" id='paySecret' name='paySecret' required/>
+                    <input onChange={handleChange} className='h-10 w-[250px] px-2 focus:outline-blue-400 rounded-[12px]' type="text" id='paySecret' name='paySecret' value={changeVar.paySecret} required/>
                 </form>
                 <div className='flex justify-center'>
-                    <button type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Save Info</button>
+                    <button onClick={handleClick} type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Save Info</button>
                 </div>
             </div>
         </div>
