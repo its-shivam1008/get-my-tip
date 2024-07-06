@@ -8,7 +8,7 @@ const userSchema = new Schema({
     },
     name:{
         type:String,
-        required: ture
+        required: true
     },
     username:{
         type:String
@@ -23,4 +23,5 @@ const userSchema = new Schema({
     }
 });
 
-export default mongoose.model.User || model("User", userSchema);
+const User = mongoose.models.User || model("User", userSchema);
+export default User;
