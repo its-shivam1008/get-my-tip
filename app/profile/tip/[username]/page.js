@@ -10,13 +10,14 @@ import Image from 'next/image';
 import { initiate } from '@/actions/useraction'
 
 const page = () => {
-  // const session = {
-  //     user:{
-  //         name:"Shivam",
-  //         image:"laosn",
-  //         email:"hbdh@gami.com"
-  //     }
-  // }
+  //ths should be the person who we are want to pay. not the session user
+  const session = {
+      user:{
+          name:"shivamshukla.email",
+          image:"laosn",
+          email:"shivamshukla.email@gmail.com"
+      }
+  }
   const [paymentForm, setPaymentForm] = useState({});
   const handleChange = (e) => {
     setPaymentForm({ ...paymentForm, [e.target.name]: e.target.value })
@@ -58,7 +59,8 @@ const page = () => {
 const handlePay = (e) => {
     e.preventDefault();
     console.log(paymentForm);
-    Pay(paymentForm.amount)
+    let amt = paymentForm.amount * 100
+    Pay(amt);
   }
 
   return (

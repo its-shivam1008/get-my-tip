@@ -17,10 +17,10 @@ export const initiate = async(amount, to_username, paymentform) =>{
     let ordersCreation = await instance.orders.create(options)
 
     await Payment.create({
-        oid: ordersCreation.id,
+        o_id: ordersCreation.id,
         amount: amount,
-        to_username:to_username,
-        name:paymentform.name,
+        to_name:to_username,
+        from_name:paymentform.name,
         message:paymentform.message
     })
 
