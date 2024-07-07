@@ -20,7 +20,8 @@ export const authOptions = {
       if(account.provider == 'github'){
           await connectDB();
           // const client = mongoose.connect("mongodb://localhost:27017/GetMeATip");
-          const currentUser = await User.findOne({email:email});
+          const currentUser = await User.findOne({email:user.email});
+          // console.log(currentUser);
           if(!currentUser){
             const newUser = new User({
               email:user.email,
