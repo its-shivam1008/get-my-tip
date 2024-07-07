@@ -16,16 +16,20 @@ export const authOptions = {
     
   ],
   callbacks: {
-    async signIn({ user, account, profile, email}) {
+    async signIn({ user, account, profile, email, credentials}) {
       if(account.provider == 'github'){
           await connectDB();
           // const client = mongoose.connect("mongodb://localhost:27017/GetMeATip");
           const currentUser = await User.findOne({email:email});
           if(!currentUser){
-            const newUser = new User.create({
+            const newUser = new User({
               email:user.email,
               username:user.email.split('@')[0]
             })       
+            await newUser.save();
+            user.name = newUser.username
+          }else{
+            user.name = currentUser.username
           }
           return true;
       }
