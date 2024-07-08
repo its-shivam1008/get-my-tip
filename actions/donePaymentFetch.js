@@ -13,14 +13,16 @@ export const fetchDonePayment = async (email)=>{
     if(!userNotFound){
         return userNotFound;
     }else{
-        const donePayments = await Payment.find({to_name: user.username ,done:true});
+        let username = user.username
+        const donePayments = await Payment.find({to_name: username ,done:true});
         const paymentNotFound = {
             message:"No successful payments found"
         }
         if(!donePayments){
             return paymentNotFound;
         }else{
-            return donePayments;
+            return JSON.parse(JSON.stringify(donePayments));
+            // console.log(donePayments);
         }
     }
 }
