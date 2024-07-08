@@ -5,12 +5,16 @@ import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { Tranquiluxe } from "uvcanvas"
 import Image from 'next/image';
+import { fetchDonePayment } from '@/actions/donePaymentFetch';
 const page = () => {
     const { data: session} = useSession()
     const router = useRouter();
     useEffect(() => {
       if(!session){
         router.push('/login');
+      } else {
+        let user = fetchDonePayment(session.user.email);
+        console.log(user);
       }
     }, [])
   if(session){
