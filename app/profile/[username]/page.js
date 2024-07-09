@@ -11,9 +11,15 @@ const page = () => {
     const { data: session} = useSession()
     const router = useRouter();
     let [userInfo, setUserInfo] = useState([])
+    let [sum, setSum] = useState(0)
     const getData =async (params) =>{
       let user = await fetchDonePayment(session.user.email);
-        setUserInfo(user);
+      setUserInfo(user);
+      let num = 0;
+      for(let ele of user){
+        num = num + ele.amount
+      }
+      setSum(num);
     }
     useEffect(() => {
       if(!session){
@@ -23,6 +29,7 @@ const page = () => {
       }
     }, [])
     
+    const notFoundTag = <div className="flex justify-center items-center font-bold text-2xl">No tips are found</div>
 
   if(session){
   return (
@@ -38,17 +45,21 @@ const page = () => {
                 Top supporters
               </div>
               <div className='w-auto rounded-[12px] space-y-2 p-4 bg-slate-300 bg-opacity-40 backdrop-blur-xl shadow-2xl'>
-              {userInfo ? userInfo.map(function(donator,i) {
+              {if(userInfo){ 
+                userInfo.map(function(donator,i) {
                   return (<div key={i} className='flex space-x-1'>
                   <Image src="./profile.svg" alt="Profileimg" width={20} height={20}/> <span>{donator.from_name} donated</span><span className='folt-bold'> ₹{(donator.amount)/100} </span><span>with a message: </span><span>"{donator.message}"</span>
                 </div>)
-                }):`<div className="flex justify-center items-center font-bold text-2xl">No tips are found</div>`}
+                })}else{
+                  return (<div className="flex justify-center items-center font-bold text-2xl">No tips are found</div>)
+                }}
+               
               </div>
             </div>
             <div>
               <div className='font-bold flex space-x-1 py-5 px-3 w-fit mx-auto text-center bg-blue-300 bg-opacity-50 backdrop-blur-xl shadow-xl rounded-[12px]'>
                   <div className='text-3xl text-black'>Earnings :</div>
-                  <div className='text-3xl text-green-500'>₹ 433,454</div>
+                  <div className='text-3xl text-green-500'>₹ {sum/100}</div>
               </div>
             </div>
           </div>

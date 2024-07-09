@@ -14,7 +14,7 @@ export const fetchDonePayment = async (email)=>{
         return userNotFound;
     }else{
         let username = user.username
-        const donePayments = await Payment.find({to_name: username ,done:true});
+        const donePayments = await Payment.find({to_name: username ,done:true}).sort({amount:-1});
         const paymentNotFound = {
             message:"No successful payments found"
         }
