@@ -11,7 +11,7 @@ export const fetchDonePayment = async (email)=>{
         message:"No user found with this email address"
     }
     if(!userNotFound){
-        return userNotFound;
+        return false;
     }else{
         let username = user.username
         const donePayments = await Payment.find({to_name: username ,done:true}).sort({amount:-1});
@@ -19,7 +19,7 @@ export const fetchDonePayment = async (email)=>{
             message:"No successful payments found"
         }
         if(!donePayments){
-            return paymentNotFound;
+            return false;
         }else{
             return JSON.parse(JSON.stringify(donePayments));
             // console.log(donePayments);

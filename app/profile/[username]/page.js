@@ -15,6 +15,7 @@ const page = () => {
     const getData =async (params) =>{
       let user = await fetchDonePayment(session.user.email);
       setUserInfo(user);
+      console.log(userInfo)
       let num = 0;
       for(let ele of user){
         num = num + ele.amount
@@ -45,15 +46,15 @@ const page = () => {
                 Top supporters
               </div>
               <div className='w-auto rounded-[12px] space-y-2 p-4 bg-slate-300 bg-opacity-40 backdrop-blur-xl shadow-2xl'>
-              {if(userInfo){ 
+              { userInfo.length>0 &&
                 userInfo.map(function(donator,i) {
                   return (<div key={i} className='flex space-x-1'>
                   <Image src="./profile.svg" alt="Profileimg" width={20} height={20}/> <span>{donator.from_name} donated</span><span className='folt-bold'> ₹{(donator.amount)/100} </span><span>with a message: </span><span>"{donator.message}"</span>
                 </div>)
-                })}else{
-                  return (<div className="flex justify-center items-center font-bold text-2xl">No tips are found</div>)
-                }}
-               
+                })}
+               {
+                userInfo.length == 0 && <div className="flex justify-center items-center font-bold text-2xl">No tips are found</div>
+               }
               </div>
             </div>
             <div>
