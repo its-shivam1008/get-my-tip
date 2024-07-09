@@ -5,18 +5,25 @@ import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { Tranquiluxe } from "uvcanvas"
 import Image from 'next/image';
+import { useState } from 'react';
 import { fetchDonePayment } from '@/actions/donePaymentFetch';
 const page = () => {
     const { data: session} = useSession()
     const router = useRouter();
+    let [userInfo, setUserInfo] = useState([])
+    const getData =async (params) =>{
+      let user = await fetchDonePayment(session.user.email);
+        setUserInfo(user);
+    }
     useEffect(() => {
       if(!session){
         router.push('/login');
-      } else {
-        let user = fetchDonePayment(session.user.email);
-        console.log(user);
+      }else{
+        getData();
       }
     }, [])
+    
+
   if(session){
   return (
     <div className='md:h-screen w-full min-[0px]:max-md:h-fit py-10'>
@@ -30,19 +37,12 @@ const page = () => {
               <div className='text-2xl font-bold'>
                 Top supporters
               </div>
-              <div className='rounded-[12px] space-y-1 p-3 bg-slate-300 bg-opacity-40 backdrop-blur-xl shadow-2xl'>
-                <div className='flex space-x-1'>
-                  <Image src="profile.svg" alt="Profileimg" width={20} height={20}/> <span>aman donated</span><span className='folt-bold'> ₹20 </span><span>with a message: </span><span>"Mesage is that you're cute."</span>
-                </div>
-                <div className='flex space-x-1'>
-                  <Image src="profile.svg" alt="Profileimg" width={20} height={20}/> <span>aman2 donated</span><span className='folt-bold'> ₹20 </span><span>with a message: </span><span>"Mesage is that you're cute."</span>
-                </div>
-                <div className='flex space-x-1'>
-                  <Image src="profile.svg" alt="Profileimg" width={20} height={20}/> <span>aman3 donated</span><span className='folt-bold'> ₹20 </span><span>with a message: </span><span>"Mesage is that you're cute."</span>
-                </div>
-                <div className='flex space-x-1'>
-                  <Image src="profile.svg" alt="Profileimg" width={20} height={20}/> <span>aman4 donated</span><span className='folt-bold'> ₹20 </span><span>with a message: </span><span>"Mesage is that you're cute."</span>
-                </div>
+              <div className='w-auto rounded-[12px] space-y-2 p-4 bg-slate-300 bg-opacity-40 backdrop-blur-xl shadow-2xl'>
+              {userInfo ? userInfo.map(function(donator,i) {
+                  return (<div key={i} className='flex space-x-1'>
+                  <Image src="./profile.svg" alt="Profileimg" width={20} height={20}/> <span>{donator.from_name} donated</span><span className='folt-bold'> ₹{(donator.amount)/100} </span><span>with a message: </span><span>"{donator.message}"</span>
+                </div>)
+                }):`<div className="flex justify-center items-center font-bold text-2xl">No tips are found</div>`}
               </div>
             </div>
             <div>
