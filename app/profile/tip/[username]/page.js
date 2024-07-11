@@ -1,23 +1,42 @@
 "use client";
 import React from 'react'
-import { useSession, signIn, signOut } from "next-auth/react"
-import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+
 import { Tranquiluxe } from "uvcanvas"
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Script from 'next/script';
-import Image from 'next/image';
+import { fetchUserByUsername } from '@/actions/donePaymentFetch';
 import { initiate } from '@/actions/useraction'
+import { useRouter } from 'next/navigation';
+
 
 const page = () => {
-  //ths should be the person who we are want to pay. not the session user
-  const session = {
-      user:{
-          name:"shivamshukla.email",
-          image:"laosn",
-          email:"shivamshukla.email@gmail.com"
-      }
+
+  // const searchParams = useSearchParams()
+  const router = useRouter();
+  const [fullUrl, setFullUrl] = useState('')
+  const [session, setSession] = useState({})
+  const getUser = async() =>{
+    // const search = searchParams.get('search')
+    const username = fullUrl.split('/')[fullUrl.length-1]
+    let u = await fetchUserByUsername(username);
+    setSession(u);
   }
+  useEffect(() => {
+    if(typeof window !== 'undefiened'){
+      const url = window.location.href;
+      setFullUrl(url);
+    }
+    getUser()
+  }, [router])
+  
+  //ths should be the person who we are want to pay. not the session user
+  // const session = {
+  //     user:{
+  //         name:"shivamshukla.email",
+  //         image:"laosn",
+  //         email:"shivamshukla.email@gmail.com"
+  //     }
+  // }
   const [paymentForm, setPaymentForm] = useState({});
   const handleChange = (e) => {
     setPaymentForm({ ...paymentForm, [e.target.name]: e.target.value })
@@ -29,10 +48,10 @@ const page = () => {
   }
 
   const Pay = async (amount) => {
-    let a = await initiate(amount, session?.user.name, paymentForm);
+    let a = await initiate(amount, session?.username, paymentForm);
     let order_id = a.id
     var options = {
-      "key": process.env.NEXT_PUBLIC_KEY_ID, // Enter the Key ID generated from the Dashboard
+      "key": session.razorpayid, // Enter the Key ID generated from the Dashboard
       "amount": amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
       "currency": "INR",
       "name": "Get me a tip!", //your business name
@@ -113,8 +132,8 @@ const handlePay = (e) => {
                   <div>
                     <div className='text-center'>User info</div>
                     <hr />
-                    <div>Name: {session.user.name}</div>
-                    <div>email: {session.user.email}</div>
+                    <div>Name: {session.name}</div>
+                    <div>email: {session.email}</div>
                   </div>
                 </div>
               </div>

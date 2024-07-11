@@ -36,3 +36,15 @@ export const fetchUser = async (email) =>{
         return JSON.parse(JSON.stringify(u));
     }
 }
+
+export const fetchUserByUsername = async (username) =>{
+    await connectDB();
+    const u = await User.findOne({username:username});
+    if(!u){
+        return {
+            error:"No user found with this email address"
+        };
+    }else{
+        return JSON.parse(JSON.stringify(u));
+    }
+}
