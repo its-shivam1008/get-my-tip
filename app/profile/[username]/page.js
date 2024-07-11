@@ -6,14 +6,17 @@ import { useEffect } from 'react';
 import { Tranquiluxe } from "uvcanvas"
 import Image from 'next/image';
 import { useState } from 'react';
-import { fetchDonePayment } from '@/actions/donePaymentFetch';
+import { fetchDonePayment, fetchUser } from '@/actions/donePaymentFetch';
 const page = () => {
     const { data: session} = useSession()
+    const [userSession, setUserSession] = useState({})
     const router = useRouter();
     let [userInfo, setUserInfo] = useState([])
     let [sum, setSum] = useState(0)
     const getData =async (params) =>{
       let user = await fetchDonePayment(session.user.email);
+      let userDetail = await fetchUser(session.user.email);
+      setUserSession(userDetail);
       setUserInfo(user);
       console.log(userInfo)
       let num = 0;
@@ -30,7 +33,6 @@ const page = () => {
       }
     }, [])
     
-    const notFoundTag = <div className="flex justify-center items-center font-bold text-2xl">No tips are found</div>
 
   if(session){
   return (
@@ -66,18 +68,18 @@ const page = () => {
           </div>
           <div className='p-5 flex flex-col'>
           <div className="rounded-full flex justify-center">
-              <img className='rounded-full' alt='userImg' width={150} height={150} src={session.user.image}/>
+              <img className='rounded-full' alt='userImg' width={150} height={150} src={userSession.profilepic}/>
             </div>
             <div className='mx-auto'>
               <div className='mt-5 p-5 flex justify-center my-auto rounded-[12px] space-y-1 bg-slate-300 bg-opacity-40 backdrop-blur-xl shadow-2xl'>
                 <div>
                   <div className='text-center'>User info</div>
                   <hr />
-                  <div>Name : {session.user.name}</div>
-                  <div>Email : {session.user.email}</div>
-                  <div>Username : {session.user.email}</div>
-                  <div>Razorpay Id : {session.user.email}</div>
-                  <div>Razorpay Secret : {session.user.email}</div>
+                  <div>Name : {userSession.name}</div>
+                  <div>Email : {userSession.email}</div>
+                  <div>Username : {userSession.username}</div>
+                  <div>Razorpay Id : {userSession.razorpayid}</div>
+                  <div>Razorpay Secret : {userSession.razorpaysecret}</div>
                 </div>
               </div>
             </div>
