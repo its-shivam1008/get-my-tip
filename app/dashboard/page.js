@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { Novatrix } from 'uvcanvas';
 import { fetchUser } from '@/actions/donePaymentFetch';
+import { updateUser } from '@/actions/updateUser';
 const page = () => {
   const { data: session, status, update } = useSession();
   const router = useRouter();
@@ -33,14 +34,10 @@ const page = () => {
     )
   }
   
-  const handleClick = (e) => {
-    e.preventDefault();
-    console.log(changeVar); 
-  }
-
   const handleSubmit = async(e) => {
     update();
-    
+    let a = await updateUser(e, session.user.name);
+    aler("profile updated");
   }
 
   return (
@@ -67,7 +64,7 @@ const page = () => {
                     <input onChange={handleChange} className='h-10 w-[250px] px-2 focus:outline-blue-400 rounded-[12px]' type="text" id='razorpaysecret' name='razorpaysecret' value={changeVar.paySecret} required/>
                 </form>
                 <div className='flex justify-center'>
-                    <button onClick={handleClick} type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Save Info</button>
+                    <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Save Info</button>
                 </div>
             </div>
         </div>

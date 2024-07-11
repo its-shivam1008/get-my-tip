@@ -6,6 +6,9 @@ const userSchema = new Schema({
         required: true,
         unique:true
     },
+    profilepic:{
+        type:String,
+    },
     name:{
         type:String,
         // required: true

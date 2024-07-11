@@ -25,6 +25,8 @@ export const authOptions = {
           if(!currentUser){
             const newUser = new User({
               email:user.email,
+              name:user.name,
+              profilepic:user.image,
               username:user.email.split('@')[0]
             })       
             await newUser.save();

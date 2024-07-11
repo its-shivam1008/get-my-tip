@@ -106,7 +106,7 @@ const handlePay = (e) => {
             </div>
             <div className='p-5 flex flex-col'>
               <div className="rounded-full flex justify-center">
-                {/* <Image className='rounded-full' width={150} height={150} src={session.user.image}/> */}
+                {/* <img className='rounded-full' width={150} height={150} src={session.user.image}/> */}
               </div>
               <div className='mx-auto'>
                 <div className='mt-5 p-5 flex justify-center my-auto rounded-[12px] space-y-1 bg-slate-300 bg-opacity-40 backdrop-blur-xl shadow-2xl'>
