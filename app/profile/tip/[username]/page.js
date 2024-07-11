@@ -9,25 +9,25 @@ import { initiate } from '@/actions/useraction'
 import { useRouter } from 'next/navigation';
 
 
-const page = () => {
+const page = ({params}) => {
 
   // const searchParams = useSearchParams()
-  const router = useRouter();
-  const [fullUrl, setFullUrl] = useState('')
+  // const router = useRouter();
+  // const [fullUrl, setFullUrl] = useState('')
   const [session, setSession] = useState({})
   const getUser = async() =>{
     // const search = searchParams.get('search')
-    const username = fullUrl.split('/')[fullUrl.length-1]
-    let u = await fetchUserByUsername(username);
+    // const username = fullUrl.split('/')[fullUrl.length-1]
+    let u = await fetchUserByUsername(params.username);
     setSession(u);
   }
   useEffect(() => {
-    if(typeof window !== 'undefiened'){
-      const url = window.location.href;
-      setFullUrl(url);
-    }
+    // if(typeof window !== 'undefiened'){
+    //   const url = window.location.href;
+    //   setFullUrl(url);
+    // }
     getUser()
-  }, [router])
+  }, [])
   
   //ths should be the person who we are want to pay. not the session user
   // const session = {
@@ -125,15 +125,16 @@ const handlePay = (e) => {
             </div>
             <div className='p-5 flex flex-col'>
               <div className="rounded-full flex justify-center">
-                {/* <img className='rounded-full' width={150} height={150} src={session.user.image}/> */}
+                <img className='rounded-full' width={150} height={150} src={session.profilepic}/>
               </div>
               <div className='mx-auto'>
                 <div className='mt-5 p-5 flex justify-center my-auto rounded-[12px] space-y-1 bg-slate-300 bg-opacity-40 backdrop-blur-xl shadow-2xl'>
-                  <div>
-                    <div className='text-center'>User info</div>
+                  <div className='space-y-3 text-xl'>
+                    <div className='text-center'>Creator's info</div>
                     <hr />
                     <div>Name: {session.name}</div>
-                    <div>email: {session.email}</div>
+                    <div>Email: {session.email}</div>
+                    <div>Username: {session.username}</div>
                   </div>
                 </div>
               </div>

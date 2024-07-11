@@ -66,15 +66,18 @@ const page = () => {
           </div>
           <div className='p-5 flex flex-col'>
           <div className="rounded-full flex justify-center">
-              <Image className='rounded-full' alt='userImg' width={150} height={150} src={session.user.image}/>
+              <img className='rounded-full' alt='userImg' width={150} height={150} src={session.user.image}/>
             </div>
             <div className='mx-auto'>
               <div className='mt-5 p-5 flex justify-center my-auto rounded-[12px] space-y-1 bg-slate-300 bg-opacity-40 backdrop-blur-xl shadow-2xl'>
                 <div>
                   <div className='text-center'>User info</div>
                   <hr />
-                  <div>Name: {session.user.name}</div>
-                  <div>email: {session.user.email}</div>
+                  <div>Name : {session.user.name}</div>
+                  <div>Email : {session.user.email}</div>
+                  <div>Username : {session.user.email}</div>
+                  <div>Razorpay Id : {session.user.email}</div>
+                  <div>Razorpay Secret : {session.user.email}</div>
                 </div>
               </div>
             </div>

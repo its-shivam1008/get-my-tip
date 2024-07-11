@@ -4,6 +4,8 @@ import Payment from "@/models/Payment";
 import Razorpay from "razorpay";
 import connectDB from "@/Db/dbConnect";
 
+//I have to retrieve the process.env.KEY_Sectret from the user.
+
 export const POST  = async (req)=> {
     await connectDB();
     let body = await req.formData();
