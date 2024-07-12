@@ -13,7 +13,7 @@ export default function Home() {
   const [searchBox, setSearchBox] = useState({});
   const handleChange = (e) => {
     setSearchBox({...searchBox,[e.target.name]: e.target.value} );
-    console.log(searchBox)
+    // console.log(searchBox)
   }
   const router = useRouter();
   

@@ -23,7 +23,7 @@ const page = () => {
         return (
             <div className='h-screen'>
                 <div className="h-screen">
-                     {/* <Opulento /> */}
+                     <Opulento />
                 </div>
                 <div className='absolute top-0 flex justify-center items-center h-screen w-full'>
                     <div className='flex flex-col space-y-5 justify-center items-center rounded-[12px]  h-fit bg-white bg-opacity-40 backdrop-blur-xl w-fit p-4 my-auto'>
