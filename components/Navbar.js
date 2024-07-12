@@ -24,7 +24,6 @@ const Navbar = () => {
                 <Link href='/' className='text-2xl font-bold'>Logo</Link>
             </div>
             <div className='md:hidden flex space-x-2 items-center'>
-                <div><Image src='./search.svg' width={30} height={30} alt='search icon'/></div>
                 <div onClick={handleClick} className='flex-col space-y-1 bg-gray-700 hover:cursor-pointer bg-opacity-15 p-2 rounded-md'>
                     <div className="bg-white h-1 rounded-xl w-7"></div>
                     <div className="bg-white h-1 rounded-xl w-7"></div>

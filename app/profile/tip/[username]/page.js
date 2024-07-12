@@ -124,8 +124,8 @@ const handlePay = (e) => {
               </div>
             </div>
             <div className='p-5 flex flex-col'>
-              <div className="rounded-full flex justify-center">
-                <img className='rounded-full' width={150} height={150} src={session.profilepic}/>
+              <div className="rounded-full mx-auto w-auto border-blue-500 border-2 size-40  overflow-hidden">
+                <img className='rounded-full object-cover size-40' width={128} height={128} src={session.profilepic}/>
               </div>
               <div className='mx-auto'>
                 <div className='mt-5 p-5 flex justify-center my-auto rounded-[12px] space-y-1 bg-slate-300 bg-opacity-40 backdrop-blur-xl shadow-2xl'>

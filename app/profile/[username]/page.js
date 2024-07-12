@@ -47,11 +47,11 @@ const page = () => {
               <div className='text-2xl font-bold'>
                 Top supporters
               </div>
-              <div className='w-auto rounded-[12px] h-[60%] space-y-2 p-4 bg-slate-300 bg-opacity-40 backdrop-blur-xl shadow-2xl'>
+              <div className='w-auto rounded-[12px] overflow-x-hidden overflow-y-auto h-60 space-y-2 p-4 bg-slate-300 bg-opacity-40 backdrop-blur-xl shadow-2xl'>
               { userInfo.length>0 &&
                 userInfo.map(function(donator,i) {
                   return (<div key={i} className='flex space-x-1'>
-                  <Image src="profile.svg" alt="Profileimg" width={20} height={20}/> <span>{donator.from_name} donated</span><span className='folt-bold'> ₹{(donator.amount)/100} </span><span>with a message: </span><span>"{donator.message}"</span>
+                  <span>{donator.from_name} donated</span><span className='folt-bold'> ₹{(donator.amount)/100} </span><span>with a message: </span><span>"{donator.message}"</span>
                 </div>)
                 })}
                {
@@ -67,8 +67,8 @@ const page = () => {
             </div>
           </div>
           <div className='p-5 flex flex-col'>
-          <div className="rounded-full flex justify-center">
-              <img className='rounded-full' alt='userImg' width={150} height={150} src={userSession.profilepic}/>
+          <div className="rounded-full mx-auto w-auto border-blue-500 border-2 size-40  overflow-hidden">
+              <img className='rounded-full object-cover size-40' width={128} height={128} src={userSession.profilepic}/>
             </div>
             <div className='mx-auto'>
               <div className='mt-5 p-5 flex justify-center my-auto rounded-[12px] space-y-1 bg-slate-300 bg-opacity-40 backdrop-blur-xl shadow-2xl'>
