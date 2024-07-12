@@ -118,7 +118,7 @@ const handlePay = (e) => {
                       <button onClick={handleClick} value={500} className='visited:text-white font-bold cursor-pointer w-fit m-1 rounded-[12px] p-3 bg-slate-300 bg-opacity-40 backdrop-blur-2xl shadow-2xl'>₹500</button>
                       <button onClick={handleClick} value={1000} className='visited:text-white font-bold cursor-pointer w-fit m-1 rounded-[12px] p-3 bg-slate-300 bg-opacity-40 backdrop-blur-2xl shadow-2xl'>₹1000</button>
                     </div>
-                    <button onClick={handlePay} className='rounded-[12px] bg-blue-500 hover:bg-white border-2 border-blue-500 text-white hover:text-blue-500 font-bold transition-colors duration-700 p-3 w-full'>Tip now!</button>
+                    <button onClick={handlePay} className='rounded-[12px] bg-blue-500 hover:bg-white border-2 border-blue-500 text-white hover:text-blue-500 font-bold transition-colors duration-500 p-3 w-full disabled:bg-slate-500 disabled:hover:bg-slate-800' disabled={paymentForm.name?.length < 3 || paymentForm.message?.length < 2 || paymentForm.amount?.length === 0}>Tip now!</button>
                   </form>
                 </div>
               </div>
