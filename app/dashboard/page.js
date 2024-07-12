@@ -56,8 +56,8 @@ const page = () => {
                     <input onChange={handleChange} className='h-10 w-[250px] px-2 focus:outline-blue-400 rounded-[12px]' type="text" id='username' name='username' placeholder='get your username or update it' value={changeVar.username} required autoComplete='username'/><br />
                     <label htmlFor="profilepic">Profile image : </label>
                     <input onChange={handleChange} className='h-10 w-[250px] px-2 focus:outline-blue-400 rounded-[12px]' type="text" id='profilepic' name='profilepic' placeholder='get your username or update it' value={changeVar.profilepic} required autoComplete='profilepic'/><br />
-                    <label htmlFor="email">Email : </label>
-                    <input onChange={handleChange} placeholder='abc@gamil.com' className='h-10 w-[250px] px-2 focus:outline-blue-400 rounded-[12px]' type="email" id='email' name='email' value={changeVar.email} required/><br />
+                    {/* <label htmlFor="email">Email : </label>
+                    <input onChange={handleChange} placeholder='abc@gamil.com' className='h-10 w-[250px] px-2 focus:outline-blue-400 rounded-[12px]' type="email" id='email' name='email' value={changeVar.email} required/><br /> */}
                     <label htmlFor="password">Password : </label>
                     <input onChange={handleChange} className='h-10 w-[250px] px-2 focus:outline-blue-400 rounded-[12px]' type="password" id='password' name='password' value={changeVar.password} required autoComplete='current-password'/><br />
                     <label htmlFor="payId">Razorpay Id : </label>
