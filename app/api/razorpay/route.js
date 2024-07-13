@@ -5,7 +5,6 @@ import Razorpay from "razorpay";
 import connectDB from "@/Db/dbConnect";
 import User from "@/models/User";
 
-//I have to retrieve the process.env.KEY_Sectret from the user.
 
 export const POST  = async (req)=> {
     await connectDB();
@@ -25,6 +24,7 @@ export const POST  = async (req)=> {
         const updatedPayment = await Payment.findOneAndUpdate({o_id: body.razorpay_order_id}, {done: true}, {new:true});
         return NextResponse.redirect(`${process.env.NEXT_PUBLIC_URL}/profile/tip/${updatedPayment.to_name}?paymentdone=true`);
     }else{
+        // return NextResponse.redirect(`${process.env.NEXT_PUBLIC_URL}/profile/tip/${updatedPayment.to_name}?paymentdone=false`);
         return NextResponse.json({success: false, message:"Payment verification failed"});
     }
 }

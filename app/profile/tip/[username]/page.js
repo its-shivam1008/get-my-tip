@@ -7,15 +7,19 @@ import Script from 'next/script';
 import { fetchUserByUsername } from '@/actions/donePaymentFetch';
 import { initiate } from '@/actions/useraction'
 import { useRouter } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Bounce } from 'react-toastify';
 
 
-const page = ({params}) => {
+const page = ({ params }) => {
 
-  // const searchParams = useSearchParams()
-  // const router = useRouter();
+  const searchParams = useSearchParams()
+  const router = useRouter();
   // const [fullUrl, setFullUrl] = useState('')
   const [session, setSession] = useState({})
-  const getUser = async() =>{
+  const getUser = async () => {
     // const search = searchParams.get('search')
     // const username = fullUrl.split('/')[fullUrl.length-1]
     let u = await fetchUserByUsername(params.username);
@@ -27,6 +31,37 @@ const page = ({params}) => {
     //   setFullUrl(url);
     // }
     getUser()
+  }, [])
+
+  useEffect(() => {
+    if(searchParams.get('paymentdone')== "true"){
+      toast('Thanks for your Donation 🙏', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+        });
+        router.push(`/profile/tip/${params.username}`)
+    }
+    else if(searchParams.get('paymentdone')== "false"){
+      toast.error('⚠ Payment Failed ', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+        });
+        router.push(`/profile/tip/${params.username}`)
+    }
   }, [])
   
   //ths should be the person who we are want to pay. not the session user
@@ -48,6 +83,17 @@ const page = ({params}) => {
   }
 
   const Pay = async (amount) => {
+    toast.info('Wait, payment initiated 💵', {
+      position: "top-center",
+      autoClose: 2500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+      });
     let a = await initiate(amount, session?.username, paymentForm);
     let order_id = a.id
     var options = {
@@ -60,8 +106,8 @@ const page = ({params}) => {
       "order_id": order_id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
       "callback_url": `${process.env.NEXT_PUBLIC_URL}/api/razorpay`,
       "prefill": { //We recommend using the prefill parameter to auto-fill customer's contact information especially their phone number
-        "name": "Gaurav Kumar", //your customer's name
-        "email": "gaurav.kumar@example.com",
+        "name": paymentForm.name, //your customer's name
+        "email": "abc@example.com",
         "contact": "9000090000" //Provide the customer's phone number for better conversion rates 
       },
       "notes": {
@@ -75,7 +121,7 @@ const page = ({params}) => {
     rzp1.open();
   }
 
-const handlePay = (e) => {
+  const handlePay = (e) => {
     e.preventDefault();
     console.log(paymentForm);
     let amt = paymentForm.amount * 100
@@ -84,6 +130,18 @@ const handlePay = (e) => {
 
   return (
     <>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        />
       <Script src="https://checkout.razorpay.com/v1/checkout.js"></Script>
       <div className='md:h-screen w-full min-[0px]:max-md:h-fit py-10'>
         <div className='md:absolute w-full'>
@@ -125,7 +183,7 @@ const handlePay = (e) => {
             </div>
             <div className='p-5 flex flex-col'>
               <div className="rounded-full mx-auto w-auto border-blue-500 border-2 size-40  overflow-hidden">
-                <img className='rounded-full object-cover size-40' width={128} height={128} src={session.profilepic}/>
+                <img className='rounded-full object-cover size-40' width={128} height={128} src={session.profilepic} />
               </div>
               <div className='mx-auto'>
                 <div className='mt-5 p-5 flex justify-center my-auto rounded-[12px] space-y-1 bg-slate-300 bg-opacity-40 backdrop-blur-xl shadow-2xl'>
