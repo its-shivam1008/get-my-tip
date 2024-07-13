@@ -1,5 +1,6 @@
 import NextAuth from "next-auth"
 import GithubProvider from "next-auth/providers/github"
+import GoogleProvider from "next-auth/providers/google"
 import mongoose from "mongoose";
 import connectDB from "@/Db/dbConnect";
 import User from "@/models/User";
@@ -12,12 +13,16 @@ export const authOptions = {
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET,
     }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_ID,
+      clientSecret: process.env.GOOGLE_SECRET,
+     }),
     // ...add more providers here
     
   ],
   callbacks: {
     async signIn({ user, account, profile, email, credentials}) {
-      if(account.provider == 'github'){
+      if(account.provider == 'github' || account.provider == 'google'){
           await connectDB();
           // const client = mongoose.connect("mongodb://localhost:27017/GetMeATip");
           const currentUser = await User.findOne({email:user.email});
