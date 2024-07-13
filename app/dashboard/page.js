@@ -6,6 +6,9 @@ import { useEffect, useState } from 'react';
 import { Novatrix } from 'uvcanvas';
 import { fetchUser } from '@/actions/donePaymentFetch';
 import { updateUser } from '@/actions/updateUser';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Bounce } from 'react-toastify';
 const page = () => {
   const { data: session, status, update } = useSession();
   const router = useRouter();
@@ -29,18 +32,53 @@ const page = () => {
   }, [])
   
   if(status === 'loading'){
-    return(
-        <div className="h-screen flex justify-center items-center text-4xl font-bold">Loading</div>
-    )
+    return (
+      <>
+          <ToastContainer
+              position="top-center"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="light"
+          />
+          <div className="h-screen flex justify-center items-center text-4xl font-bold">Loading</div>
+      </>
+  )
+  }
+
+
+  const showToastAndHandleSubmit = (e) => {
+    toast.promise(handleSubmit(e), {
+      pending: 'Updating...',
+      success: 'Updated successfully 👌',
+      error: 'Cannot update 🤯'
+    });
   }
   
   const handleSubmit = async(e) => {
     update();
     let a = await updateUser(e, session.user.name);
-    alert("profile updated");
   }
 
   return (
+    <>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        />
     <div>
       <div className='md:h-screen min-[0px]:max-md:h-[150vh]'>
         <Novatrix />
@@ -49,7 +87,7 @@ const page = () => {
         <div className='p-5 rounded-[12px] min-[0px]:max-md:backdrop-blur-sm backdrop-blur-2xl bg-slate-200 shadow-2xl bg-opacity-70'>
             <div className='space-y-5'>
                 <div className='text-center text-3xl font-bold text-blue-400'>Dashboard</div>
-                <form className='space-y-4' action={handleSubmit}>
+                <form className='space-y-4' action={showToastAndHandleSubmit}>
                     <label htmlFor="name">Name : </label>
                     <input onChange={handleChange} placeholder='Sanjay' className='h-10 w-[250px] px-2 focus:outline-blue-400 rounded-[12px]' type="text" id='name' name='name' value={changeVar.name} required/><br />
                     <label htmlFor="username">Username : </label>
@@ -73,6 +111,7 @@ const page = () => {
         </div>
       </div>
     </div>
+    </>
   )
 }
 

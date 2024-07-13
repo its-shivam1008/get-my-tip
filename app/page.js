@@ -7,6 +7,9 @@ import { Tranquiluxe, Velustro } from "uvcanvas"
 import { useState } from "react";
 import { fetchUserByUsername } from "@/actions/donePaymentFetch";
 import { useRouter } from 'next/navigation';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Bounce } from 'react-toastify';
 
 export default function Home() {
   const [isSearch, setIsSearch] = useState(false);
@@ -28,20 +31,65 @@ export default function Home() {
   };
 
   const handleClickSearch = ()=>{
-    alert(searchBox.search);
+    // alert(searchBox.search);
       findingUserAndRedirecting(searchBox.search);
   }
 
   const findingUserAndRedirecting = async (username) => {
     const u = await fetchUserByUsername(username);
     if(u.error=="No user found with this email address"){
-      alert("user with this username is not present");
-    }else{
+      toast.error(`${username} not exist`, {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+        });
+      toast.info('Check the username and try again', {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+        });
+      }else{
+        toast('Please wait, redirecting...', {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+          });
       router.push(`/profile/tip/${u.username}`);
     }
   };
 
   return (
+    <>
+    <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        />
     <div className="overflow-x-hidden">
       <div>
         <div className="h-screen bg-green-400" id="home">
@@ -99,5 +147,6 @@ export default function Home() {
         <Link href="#home" title="Back to top" className="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-[100px] px-3 py-2 text-center text-2xl absolute bottom-3 right-3">▲</Link>
       </div>
     </div>
+    </>
   );
 }

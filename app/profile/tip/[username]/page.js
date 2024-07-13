@@ -48,20 +48,6 @@ const page = ({ params }) => {
         });
         router.push(`/profile/tip/${params.username}`)
     }
-    else if(searchParams.get('paymentdone')== "false"){
-      toast.error('⚠ Payment Failed ', {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        transition: Bounce,
-        });
-        router.push(`/profile/tip/${params.username}`)
-    }
   }, [])
   
   //ths should be the person who we are want to pay. not the session user
