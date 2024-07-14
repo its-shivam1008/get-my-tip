@@ -32,8 +32,8 @@ const Navbar = () => {
             </div>
             <ul className={`${optionsCss?`min-[0px]:max-md:visible min-[0px]:max-md:absolute min-[0px]:max-md:top-[132px] min-[0px]:max-md:mx-auto min-[0px]:max-md:text-center min-[0px]:max-md:w-screen min-[0px]:max-md:space-y-4 min-[0px]:max-md:bg-white min-[0px]:max-md:bg-opacity-30  min-[0px]:max-md:backdrop-blur-3xl`:"hidden"} md:flex md:items-center md:space-x-5`}>
                 <li className='hover:text-blue-600 hover:transition-colors hover:duration-500'><Link href='/#features'>Features</Link></li>
-                <li className='hover:text-blue-600 hover:transition-colors hover:duration-500'><Link href='/contact'>Contact</Link></li>
-                <li className='hover:text-blue-600 hover:transition-colors hover:duration-500'><Link href='/services'>Services</Link></li>
+                <li className='hover:text-blue-600 hover:transition-colors hover:duration-500'><Link href="mailto:shivamshukla.email@gmail.com">Contact</Link></li>
+                <li className='hover:text-blue-600 hover:transition-colors hover:duration-500'><Link href='/#features'>Services</Link></li>
             </ul>
             <div className={`${optionsCss?"min-[0px]:max-md:visible min-[0px]:max-md:absolute min-[0px]:max-md:top-[56px] min-[0px]:max-md:py-[17px] min-[0px]:max-md:mx-auto min-[0px]:max-md:text-center min-[0px]:max-md:w-screen min-[0px]:max-md:space-y-4 min-[0px]:max-md:bg-white min-[0px]:max-md:bg-opacity-30 min-[0px]:max-md:backdrop-blur-3xl":"hidden"} md:flex md:justify-center md:items-center`}>
                 <div>
