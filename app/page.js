@@ -95,9 +95,9 @@ export default function Home() {
         <div className="h-screen bg-green-400" id="home">
           <Velustro />
         </div>
-        <div className="md:bg-gradient-to-r from-transparent min-[0px]:max-md:bg-white min-[0px]:max-md:bg-opacity-60 md:grid md:grid-cols-2 md:gap-3  absolute top-0 md:to-white h-screen">
-          <div className="col-start-2 flex flex-col space-y-4 items-center justify-center min-[0px]:max-md:pt-20 text-center p-5">
-            <div className="space-y-5">
+        <div className="md:bg-gradient-to-r from-transparent min-[0px]:max-md:bg-white min-[0px]:max-md:bg-opacity-40 md:grid md:grid-cols-2 md:gap-3  absolute top-0 md:to-white h-screen">
+          <div className="col-start-2 flex flex-col space-y-4 items-center justify-center min-[0px]:max-md:pt-20 text-center p-5 min-[0px]:max-md:p-1 content-center">
+            <div className="space-y-5 min-[0px]:max-md:w-auto min-[0px]:max-md:mx-auto min-[0px]:max-md:p-4">
               <div className="text-5xl">Get your <div className="text-blue-600">Tip !</div> Now</div>
               <div><div className="text-blue-600">&quot;Get Me a Tip&quot;</div>is a platform where creators can share their work and connect with supporters. Fans can contribute small amounts of money to help creators continue doing what they love, whether it&apos;s writing, art, or music. It&apos;s like a virtual tip jar for online content! 😊</div>
             </div>
@@ -116,14 +116,14 @@ export default function Home() {
                       Give a tip
                     </button>
                   ) : (
-                    <div className="relative inline-flex items-center justify-center px-5 py-2 text-lg font-bold text-white transition-all duration-200 bg-gray-900 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900">
+                    <div className="relative inline-flex items-center justify-center px-5 min-[0px]:max-md:px-1 min-[0px]:max-md:mx-auto min-[0px]:max-md:w-full py-2 text-lg font-bold text-white transition-all duration-200 bg-gray-900 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900">
                       <input
                         type="text"
                         placeholder="Username of creator"
                         value={searchBox.search}
                         onChange={handleChange}
                         name="search"
-                        className="bg-transparent border-none focus:ring-0 focus:outline-none"
+                        className="bg-transparent border-none focus:ring-0 focus:outline-none min-[0px]:max-md:mx-auto"
                       />
                       <button
                         onClick={handleClickSearch}
