@@ -7,7 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Bounce } from 'react-toastify';
 
-const page = () => {
+const Page = () => {
     const { data: session, status } = useSession()
     const loginAndRedirecting = (method) => {
         signIn(method);
@@ -107,4 +107,4 @@ const page = () => {
     }
 }
 
-export default page
+export default Page

@@ -7,7 +7,7 @@ import { Tranquiluxe } from "uvcanvas"
 import Image from 'next/image';
 import { useState } from 'react';
 import { fetchDonePayment, fetchUser } from '@/actions/donePaymentFetch';
-const page = () => {
+const Page = () => {
     const { data: session} = useSession()
     const [userSession, setUserSession] = useState({})
     const router = useRouter();
@@ -90,4 +90,4 @@ const page = () => {
   )
 }
 }
-export default page
+export default Page

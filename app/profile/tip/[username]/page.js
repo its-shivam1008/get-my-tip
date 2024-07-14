@@ -13,7 +13,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Bounce } from 'react-toastify';
 
 
-const page = ({ params }) => {
+const Page = ({ params }) => {
 
   const searchParams = useSearchParams()
   const router = useRouter();
@@ -189,4 +189,4 @@ const page = ({ params }) => {
     </>
   )
 }
-export default page
+export default Page

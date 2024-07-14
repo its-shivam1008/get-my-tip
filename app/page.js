@@ -99,7 +99,7 @@ export default function Home() {
           <div className="col-start-2 flex flex-col space-y-4 items-center justify-center min-[0px]:max-md:pt-20 text-center p-5">
             <div className="space-y-5">
               <div className="text-5xl">Get your <div className="text-blue-600">Tip !</div> Now</div>
-              <div><div className="text-blue-600">&quot;Get Me a Tip&quot;</div>is a platform where creators can share their work and connect with supporters. Fans can contribute small amounts of money to help creators continue doing what they love, whether it's writing, art, or music. It's like a virtual tip jar for online content! 😊</div>
+              <div><div className="text-blue-600">&quot;Get Me a Tip&quot;</div>is a platform where creators can share their work and connect with supporters. Fans can contribute small amounts of money to help creators continue doing what they love, whether it&apos;s writing, art, or music. It&apos;s like a virtual tip jar for online content! 😊</div>
             </div>
             <div >
               <div className="relative inline-flex group">

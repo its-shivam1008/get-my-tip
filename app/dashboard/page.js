@@ -9,7 +9,7 @@ import { updateUser } from '@/actions/updateUser';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Bounce } from 'react-toastify';
-const page = () => {
+const Page = () => {
   const { data: session, status, update } = useSession();
   const router = useRouter();
 
@@ -115,4 +115,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
