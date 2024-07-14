@@ -37,7 +37,7 @@ const Footer = () => {
         </div>
       </div>
         <div className='bg-slate-800 p-3 flex justify-center items-center mt-4'>
-        <div className="text-white font-medium text-xs"> Copyright &copy; 2024. All rights reserved by <a href="#home" className="text-blue-600">get-me-a-tip</a> </div>
+        <div className="text-white font-medium text-xs"> Copyright&copy; 2024. All rights reserved by <a href="#home" className="text-blue-600">get-me-a-tip</a> </div>
         </div>
     </div>
   )
