@@ -9,6 +9,7 @@ import { Bounce } from 'react-toastify';
 
 const Page = () => {
     const { data: session, status } = useSession()
+    const router = useRouter();
     const loginAndRedirecting = (method) => {
         signIn(method);
     }
@@ -54,7 +55,7 @@ const Page = () => {
             theme: "light",
             transition: Bounce,
             });
-        const router = useRouter();
+        
         router.push('/dashboard');
         return (
             <>

@@ -51,7 +51,7 @@ const Page = () => {
               { userInfo.length>0 &&
                 userInfo.map(function(donator,i) {
                   return (<div key={i} className='flex space-x-1'>
-                  <span>{donator.from_name} donated</span><span className='folt-bold'> ₹{(donator.amount)/100} </span><span>with a message: </span><span>"{donator.message}"</span>
+                  <span>{donator.from_name} donated</span><span className='folt-bold'> ₹{(donator.amount)/100} </span><span>with a message: </span><span>&quot;{donator.message}&quot;</span>
                 </div>)
                 })}
                {

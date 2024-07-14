@@ -174,7 +174,7 @@ const Page = ({ params }) => {
               <div className='mx-auto'>
                 <div className='mt-5 p-5 flex justify-center my-auto rounded-[12px] space-y-1 bg-slate-300 bg-opacity-40 backdrop-blur-xl shadow-2xl'>
                   <div className='space-y-3 text-xl'>
-                    <div className='text-center'>Creator's info</div>
+                    <div className='text-center'>Creator&apos;s info</div>
                     <hr />
                     <div>Name: {session.name}</div>
                     <div>Email: {session.email}</div>
